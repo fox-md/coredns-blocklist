@@ -43,7 +43,9 @@ func NewBlocklistPlugin(next plugin.Handler, blockDomains []string, allowDomains
 // A count of metrics around the blocking and allowing status is maintained
 // It returns the DNS RCODE
 func (b Blocklist) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dns.Msg) (int, error) {
+	log.Debugf("ServeDNS called")
 	state := request.Request{W: w, Req: r}
+	log.Debugf("Checking status for %s", state.Name())
 
 	shouldBlock, shouldAllow := b.shouldBlock(state.Name())
 
