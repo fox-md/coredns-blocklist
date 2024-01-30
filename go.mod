@@ -1,4 +1,4 @@
-module github.com/relekang/coredns-blocklist
+module github.com/fox-md/coredns-blocklist
 
 go 1.20
 
